@@ -1,8 +1,8 @@
-# Rajesh Ranjan Kumar — Personal Brand Site
+# Rajesh Ranjan — Personal Brand Site
 
-Personal website for Rajesh Ranjan Kumar: Enterprise AI architect, Responsible AI practitioner, and agentic SDLC pioneer.
+Personal website for Rajesh Ranjan: Enterprise AI leader, Responsible AI practitioner, and agentic SDLC pioneer.
 
-**Live at:** [rajeshranjan.dev](https://rajeshranjan.dev) (or your Vercel domain)
+**Live at:** [rajeshranjan.com](https://rajeshranjan.com)
 
 ## Stack
 
@@ -43,17 +43,17 @@ Your content in Markdown here.
 
 ### Adding a Daily Briefing
 
-Create `content/daily/2026-05-17.md`:
+Daily briefings are auto-generated from the `dailytechdose` repo:
 
-```markdown
----
-date: 2026-05-17
-title: "Daily GenAI Intel — May 17, 2026"
-tags: [AgenticAI, ResponsibleAI, EnterpriseAI]
----
-
-Your briefing content here.
+```bash
+# In dailytechdose/
+node scripts/publish-to-brand.js           # today
+node scripts/publish-to-brand.js 2026-05-18  # specific date
 ```
+
+This reads `data/daily/YYYY-MM-DD.md`, extracts all signals with sources,
+and writes a public newsletter to `content/daily/YYYY-MM-DD.md` with full
+SEO frontmatter (title, excerpt, tags, readTime, signalCount, og meta).
 
 ## Local Development
 
