@@ -36,7 +36,7 @@ export default function TagsPage() {
       {/* Content-derived tags */}
       {contentTags.length > 0 && (
         <div style={{ marginBottom: 56 }}>
-          <h2 style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: "1rem", fontWeight: 800, color: "var(--navy)", marginBottom: 20, textTransform: "uppercase", letterSpacing: ".08em", fontSize: ".78rem" }}>
+          <h2 style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: ".78rem", fontWeight: 800, color: "var(--navy)", marginBottom: 20, textTransform: "uppercase", letterSpacing: ".08em" }}>
             From My Articles
           </h2>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
@@ -80,6 +80,7 @@ export default function TagsPage() {
                 <span
                   key={tag}
                   id={tag.replace("#", "")}
+                  className="tag-pill-hover"
                   style={{
                     fontFamily: "'Trebuchet MS', sans-serif",
                     fontSize: ".82rem",
@@ -90,17 +91,6 @@ export default function TagsPage() {
                     padding: "6px 16px",
                     borderRadius: 20,
                     cursor: "default",
-                    transition: "all .15s",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = "var(--navy)";
-                    (e.currentTarget as HTMLElement).style.color = "#fff";
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--navy)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = "var(--surface)";
-                    (e.currentTarget as HTMLElement).style.color = "var(--text)";
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
                   }}
                 >
                   {tag}
