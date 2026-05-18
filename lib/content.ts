@@ -13,6 +13,7 @@ export interface PostMeta {
   type: "blog" | "daily" | "note";
   readTime?: string;
   featured?: boolean;
+  signalCount?: number;
 }
 
 export interface Post extends PostMeta {
@@ -41,6 +42,7 @@ function parsePost(dir: string, filename: string, type: PostMeta["type"]): Post 
     type,
     readTime: data.readTime ?? estimateReadTime(content),
     featured: data.featured ?? false,
+    signalCount: typeof data.signalCount === "number" ? data.signalCount : undefined,
     content,
   };
 }
