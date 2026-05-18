@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 
 const links = [
@@ -64,6 +63,7 @@ export function Nav() {
               <Link
                 key={href}
                 href={href}
+                className="nav-link"
                 style={{
                   fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
                   fontSize: ".88rem",
@@ -72,44 +72,38 @@ export function Nav() {
                   padding: "6px 14px",
                   borderRadius: 4,
                   textDecoration: "none",
-                  transition: "color .2s",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--orange)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
               >
                 {label}
               </Link>
             ))}
 
-            <Link href="/daily" style={{
-              fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
-              fontWeight: 700,
-              fontSize: ".88rem",
-              letterSpacing: ".04em",
-              background: "var(--orange)",
-              color: "#fff",
-              padding: "8px 20px",
-              borderRadius: 4,
-              textDecoration: "none",
-              marginLeft: 8,
-              transition: "background .2s",
-            }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--orange-d)")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "var(--orange)")}
+            <Link href="/daily"
+              className="nav-cta"
+              style={{
+                fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
+                fontWeight: 700,
+                fontSize: ".88rem",
+                letterSpacing: ".04em",
+                background: "var(--orange)",
+                color: "#fff",
+                padding: "8px 20px",
+                borderRadius: 4,
+                textDecoration: "none",
+                marginLeft: 8,
+              }}
             >
               Get Early Access
             </Link>
 
             <div style={{ display: "flex", gap: 12, marginLeft: 12, paddingLeft: 12, borderLeft: "1px solid var(--border)" }}>
               <a href="https://linkedin.com/in/ranjanemail" target="_blank" rel="noreferrer" aria-label="LinkedIn"
-                style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontWeight: 700, color: "var(--muted)", fontSize: "1rem", transition: "color .2s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--orange)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+                className="nav-social"
+                style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontWeight: 700, color: "var(--muted)", fontSize: "1rem" }}
               >in</a>
               <a href="https://twitter.com/rajeshranjankr" target="_blank" rel="noreferrer" aria-label="X / Twitter"
-                style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontWeight: 700, color: "var(--muted)", fontSize: ".95rem", transition: "color .2s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--orange)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+                className="nav-social"
+                style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontWeight: 700, color: "var(--muted)", fontSize: ".95rem" }}
               >𝕏</a>
             </div>
           </nav>

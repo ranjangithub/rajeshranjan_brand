@@ -5,19 +5,20 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Rajesh Ranjan Kumar",
-    default: "Rajesh Ranjan Kumar — Enterprise AI · Responsible AI · Agentic SDLC",
+    template: "%s | Rajesh Ranjan",
+    default: "Rajesh Ranjan — Enterprise AI · Responsible AI · Agentic SDLC",
   },
   description:
-    "Rajesh Ranjan Kumar writes on Generative AI, Agentic SDLC, Responsible AI governance, AI security, and enterprise architecture. Daily GenAI intel for CTOs and engineering leaders.",
+    "Enterprise AI architect. Daily briefings on Generative AI, Responsible AI governance, agentic systems, and AI security — for CTOs, architects, and engineering leaders.",
   keywords: [
-    "Generative AI", "Responsible AI", "AI Governance", "Agentic AI", "SDLC", "Enterprise AI",
-    "AI Security", "LangChain", "RAG", "MLOps", "AI Architecture", "Rajesh Ranjan Kumar",
+    "Rajesh Ranjan", "Enterprise AI", "Responsible AI", "AI Governance", "Agentic AI",
+    "AI Security", "NIST AI RMF", "EU AI Act", "Generative AI", "LLM Security",
+    "AI Architecture", "Agentic SDLC",
   ],
-  authors: [{ name: "Rajesh Ranjan Kumar" }],
+  authors: [{ name: "Rajesh Ranjan" }],
   openGraph: {
     type: "website",
-    siteName: "Rajesh Ranjan Kumar",
+    siteName: "Rajesh Ranjan",
     locale: "en_US",
   },
 };
