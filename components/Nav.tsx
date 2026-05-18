@@ -97,7 +97,7 @@ export function Nav() {
             </Link>
 
             <div style={{ display: "flex", gap: 12, marginLeft: 12, paddingLeft: 12, borderLeft: "1px solid var(--border)" }}>
-              <a href="https://linkedin.com/in/ranjanemail" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+              <a href="https://www.linkedin.com/in/ranjanemail/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
                 className="nav-social"
                 style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontWeight: 700, color: "var(--muted)", fontSize: "1rem" }}
               >in</a>

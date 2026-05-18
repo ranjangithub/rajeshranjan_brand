@@ -107,7 +107,7 @@ export default function TagsPage() {
           <p style={{ fontFamily: "'Trebuchet MS', sans-serif", fontWeight: 800, fontSize: "1rem", color: "#fff", marginBottom: 6 }}>Follow the conversation on LinkedIn</p>
           <p style={{ fontFamily: "Georgia, serif", fontSize: ".88rem", color: "rgba(255,255,255,.6)", fontStyle: "italic" }}>Daily posts on AI, governance, and enterprise engineering.</p>
         </div>
-        <a href="https://linkedin.com/in/rajeshranjankumar" target="_blank" rel="noreferrer" style={{
+        <a href="https://www.linkedin.com/in/ranjanemail/" target="_blank" rel="noreferrer" style={{
           fontFamily: "'Trebuchet MS', sans-serif",
           fontWeight: 700,
           fontSize: ".85rem",

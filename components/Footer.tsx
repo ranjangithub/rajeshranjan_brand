@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 const HASHTAGS = [
@@ -38,7 +39,7 @@ const navSections = [
   {
     label: "Connect",
     links: [
-      { href: "https://linkedin.com/in/rajeshranjankumar", label: "LinkedIn" },
+      { href: "https://www.linkedin.com/in/ranjanemail/", label: "LinkedIn" },
       { href: "https://twitter.com/rajeshranjankr", label: "X / Twitter" },
       { href: "https://github.com/ranjangstack", label: "GitHub" },
     ],
@@ -105,7 +106,7 @@ export function Footer() {
             {/* Brand */}
             <div>
               <p style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: "1rem", fontWeight: 800, color: "#fff", marginBottom: 8 }}>
-                Rajesh Ranjan Kumar
+                Rajesh Ranjan
               </p>
               <p style={{ fontFamily: "Georgia, serif", fontSize: ".88rem", lineHeight: 1.7, color: "rgba(255,255,255,.55)", fontStyle: "italic" }}>
                 Enterprise AI architect, Responsible AI practitioner, and agentic SDLC pioneer. Writing at the intersection of AI, governance, and engineering leadership.
@@ -136,7 +137,7 @@ export function Footer() {
 
           <div style={{ borderTop: "1px solid rgba(255,255,255,.08)", paddingTop: 20, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <p style={{ fontSize: ".8rem", color: "rgba(255,255,255,.35)" }}>
-              © {new Date().getFullYear()} Rajesh Ranjan Kumar · All content is my own view.
+              © {new Date().getFullYear()} Rajesh Ranjan · All content is my own view.
             </p>
             <p style={{ fontFamily: "Georgia, serif", fontSize: ".78rem", color: "rgba(255,255,255,.3)", fontStyle: "italic" }}>
               Built with Next.js · Content in Markdown · Hosted on Vercel
