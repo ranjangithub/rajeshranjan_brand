@@ -1,26 +1,61 @@
+"use client";
 import Link from "next/link";
 
 const links = [
-  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
   { href: "/daily", label: "Daily Intel" },
+  { href: "/blog", label: "Blog" },
   { href: "/tags", label: "Topics" },
 ];
 
 export function Nav() {
   return (
-    <header style={{ background: "var(--navy)", borderBottom: "3px solid var(--orange)" }}>
+    <header style={{
+      position: "sticky",
+      top: 0,
+      zIndex: 100,
+      background: "#ffffff",
+      borderBottom: "1px solid var(--border)",
+      boxShadow: "0 2px 12px rgba(44,44,44,.06)",
+    }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
-          {/* Logo */}
-          <Link href="/" style={{ display: "flex", flexDirection: "column", textDecoration: "none" }}>
-            <span style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: "1.1rem", fontWeight: 800, color: "#fff", letterSpacing: "-.01em", lineHeight: 1.2 }}>
-              Rajesh Ranjan Kumar
-            </span>
-            <span style={{ fontFamily: "Georgia, serif", fontSize: ".72rem", color: "rgba(255,255,255,.6)", fontStyle: "italic" }}>
-              Enterprise AI · Responsible AI · Agentic SDLC
-            </span>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 68 }}>
+
+          {/* Brand */}
+          <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
+            <div style={{
+              width: 42,
+              height: 42,
+              borderRadius: "50%",
+              background: "var(--navy)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#fff",
+              fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
+              fontWeight: 700,
+              fontSize: ".95rem",
+              flexShrink: 0,
+              letterSpacing: "-.01em",
+            }}>RR</div>
+            <div>
+              <div style={{
+                fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
+                fontSize: "1rem",
+                fontWeight: 700,
+                color: "var(--text)",
+                lineHeight: 1.2,
+              }}>
+                Rajesh <span style={{ color: "var(--orange)" }}>Ranjan</span>
+              </div>
+              <div style={{
+                fontFamily: "Georgia, serif",
+                fontSize: ".68rem",
+                color: "var(--muted)",
+                fontStyle: "italic",
+                letterSpacing: ".03em",
+              }}>Enterprise AI · Responsible AI</div>
+            </div>
           </Link>
 
           {/* Nav links */}
@@ -30,44 +65,55 @@ export function Nav() {
                 key={href}
                 href={href}
                 style={{
-                  fontFamily: "'Trebuchet MS', sans-serif",
-                  fontSize: ".82rem",
+                  fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
+                  fontSize: ".88rem",
                   fontWeight: 600,
-                  letterSpacing: ".05em",
-                  textTransform: "uppercase",
-                  color: "rgba(255,255,255,.8)",
+                  color: "var(--muted)",
                   padding: "6px 14px",
                   borderRadius: 4,
                   textDecoration: "none",
-                  transition: "background .15s, color .15s",
+                  transition: "color .2s",
                 }}
-                onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.background = "rgba(255,255,255,.12)";
-                  (e.target as HTMLElement).style.color = "#fff";
-                }}
-                onMouseLeave={(e) => {
-                  (e.target as HTMLElement).style.background = "transparent";
-                  (e.target as HTMLElement).style.color = "rgba(255,255,255,.8)";
-                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--orange)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
               >
                 {label}
               </Link>
             ))}
 
-            {/* Social icons */}
-            <div style={{ display: "flex", gap: 12, marginLeft: 12, paddingLeft: 12, borderLeft: "1px solid rgba(255,255,255,.15)" }}>
-              <a href="https://linkedin.com/in/rajeshranjankumar" target="_blank" rel="noreferrer" aria-label="LinkedIn"
-                style={{ color: "rgba(255,255,255,.6)", fontSize: "1.1rem", transition: "color .15s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,.6)")}
+            <Link href="/daily" style={{
+              fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
+              fontWeight: 700,
+              fontSize: ".88rem",
+              letterSpacing: ".04em",
+              background: "var(--orange)",
+              color: "#fff",
+              padding: "8px 20px",
+              borderRadius: 4,
+              textDecoration: "none",
+              marginLeft: 8,
+              transition: "background .2s",
+            }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--orange-d)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "var(--orange)")}
+            >
+              Get Early Access
+            </Link>
+
+            <div style={{ display: "flex", gap: 12, marginLeft: 12, paddingLeft: 12, borderLeft: "1px solid var(--border)" }}>
+              <a href="https://linkedin.com/in/ranjanemail" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+                style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontWeight: 700, color: "var(--muted)", fontSize: "1rem", transition: "color .2s" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--orange)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
               >in</a>
               <a href="https://twitter.com/rajeshranjankr" target="_blank" rel="noreferrer" aria-label="X / Twitter"
-                style={{ color: "rgba(255,255,255,.6)", fontSize: "1rem", transition: "color .15s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,.6)")}
+                style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontWeight: 700, color: "var(--muted)", fontSize: ".95rem", transition: "color .2s" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--orange)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
               >𝕏</a>
             </div>
           </nav>
+
         </div>
       </div>
     </header>

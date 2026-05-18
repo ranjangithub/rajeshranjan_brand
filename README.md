@@ -2,7 +2,7 @@
 
 Personal website for Rajesh Ranjan: Enterprise AI leader, Responsible AI practitioner, and agentic SDLC pioneer.
 
-**Live at:** [rajeshranjan.com](https://rajeshranjan.com)
+**Live at:** your Vercel deployment URL
 
 ## Stack
 
