@@ -13,14 +13,10 @@ export function PostCard({ post, basePath = "/blog", variant = "default" }: Post
   if (variant === "compact") {
     return (
       <Link href={href} style={{ display: "block", textDecoration: "none" }}>
-        <div style={{
+        <div className="postcard-compact" style={{
           padding: "16px 0",
           borderBottom: "1px solid var(--border)",
-          transition: "all .15s",
-        }}
-          onMouseEnter={(e) => (e.currentTarget.style.paddingLeft = "8px")}
-          onMouseLeave={(e) => (e.currentTarget.style.paddingLeft = "0")}
-        >
+        }}>
           <div style={{ display: "flex", gap: 12, alignItems: "baseline", marginBottom: 4 }}>
             <span style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: ".75rem", color: "var(--muted)", flexShrink: 0 }}>
               {post.date}
@@ -51,7 +47,7 @@ export function PostCard({ post, basePath = "/blog", variant = "default" }: Post
   if (variant === "featured") {
     return (
       <Link href={href} style={{ display: "block", textDecoration: "none", height: "100%" }}>
-        <article style={{
+        <article className="postcard-featured" style={{
           background: "var(--navy)",
           borderRadius: 8,
           padding: "32px",
@@ -59,17 +55,7 @@ export function PostCard({ post, basePath = "/blog", variant = "default" }: Post
           display: "flex",
           flexDirection: "column",
           boxShadow: "var(--shadow)",
-          transition: "transform .2s, box-shadow .2s",
-        }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
-            (e.currentTarget as HTMLElement).style.boxShadow = "var(--shadow-h)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-            (e.currentTarget as HTMLElement).style.boxShadow = "var(--shadow)";
-          }}
-        >
+        }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
             <span style={{
               fontFamily: "'Trebuchet MS', sans-serif",
@@ -113,7 +99,7 @@ export function PostCard({ post, basePath = "/blog", variant = "default" }: Post
 
   return (
     <Link href={href} style={{ display: "block", textDecoration: "none", height: "100%" }}>
-      <article style={{
+      <article className="postcard-default" style={{
         background: "var(--surface)",
         borderRadius: 8,
         border: "1px solid var(--border)",
@@ -122,17 +108,7 @@ export function PostCard({ post, basePath = "/blog", variant = "default" }: Post
         display: "flex",
         flexDirection: "column",
         boxShadow: "var(--shadow)",
-        transition: "transform .2s, box-shadow .2s",
-      }}
-        onMouseEnter={(e) => {
-          (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-          (e.currentTarget as HTMLElement).style.boxShadow = "var(--shadow-h)";
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-          (e.currentTarget as HTMLElement).style.boxShadow = "var(--shadow)";
-        }}
-      >
+      }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
             {post.tags.slice(0, 2).map((t) => (

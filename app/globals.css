@@ -183,3 +183,23 @@ a { color: inherit; text-decoration: none; }
 .nav-social:hover {
   color: var(--orange) !important;
 }
+.postcard-compact {
+  transition: padding-left .15s;
+}
+.postcard-compact:hover {
+  padding-left: 8px !important;
+}
+.postcard-featured {
+  transition: transform .2s, box-shadow .2s;
+}
+.postcard-featured:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-h) !important;
+}
+.postcard-default {
+  transition: transform .2s, box-shadow .2s;
+}
+.postcard-default:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-h) !important;
+}
