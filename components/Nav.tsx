@@ -1,27 +1,49 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 const links = [
   { href: "/about", label: "About" },
-  { href: "/daily", label: "Daily Intel" },
+  { href: "/daily", label: "Daily Dose" },
   { href: "/blog", label: "Blog" },
-  { href: "/tags", label: "Topics" },
+  { href: "/tutorials", label: "Tutorials" },
 ];
 
 export function Nav() {
+  const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  // Close drawer on outside click
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    if (isOpen) document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [isOpen]);
+
+  function closeMenu() { setIsOpen(false); }
+
   return (
-    <header style={{
-      position: "sticky",
-      top: 0,
-      zIndex: 100,
-      background: "#ffffff",
-      borderBottom: "1px solid var(--border)",
-      boxShadow: "0 2px 12px rgba(44,44,44,.06)",
-    }}>
+    <header
+      ref={headerRef}
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        background: "#ffffff",
+        borderBottom: "1px solid var(--border)",
+        boxShadow: "0 2px 12px rgba(44,44,44,.06)",
+      }}
+    >
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 68 }}>
 
           {/* Brand */}
-          <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
+          <Link href="/" onClick={closeMenu} style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
             <div style={{
               width: 42,
               height: 42,
@@ -57,8 +79,8 @@ export function Nav() {
             </div>
           </Link>
 
-          {/* Nav links */}
-          <nav style={{ display: "flex", gap: 4, alignItems: "center" }}>
+          {/* Desktop nav links */}
+          <nav className="nav-menu">
             {links.map(({ href, label }) => (
               <Link
                 key={href}
@@ -77,38 +99,55 @@ export function Nav() {
                 {label}
               </Link>
             ))}
-
-            <Link href="/daily"
-              className="nav-cta"
-              style={{
-                fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
-                fontWeight: 700,
-                fontSize: ".88rem",
-                letterSpacing: ".04em",
-                background: "var(--orange)",
-                color: "#fff",
-                padding: "8px 20px",
-                borderRadius: 4,
-                textDecoration: "none",
-                marginLeft: 8,
-              }}
-            >
-              Get Early Access
-            </Link>
-
             <div style={{ display: "flex", gap: 12, marginLeft: 12, paddingLeft: 12, borderLeft: "1px solid var(--border)" }}>
               <a href="https://www.linkedin.com/in/ranjanemail/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
-                className="nav-social"
-                style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontWeight: 700, color: "var(--muted)", fontSize: "1rem" }}
+                style={{
+                  fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
+                  fontWeight: 700,
+                  fontSize: ".8rem",
+                  color: "#fff",
+                  background: "#0a66c2",
+                  width: 28,
+                  height: 28,
+                  borderRadius: 4,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textDecoration: "none",
+                  flexShrink: 0,
+                }}
               >in</a>
-              <a href="https://twitter.com/rajeshranjankr" target="_blank" rel="noreferrer" aria-label="X / Twitter"
-                className="nav-social"
-                style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontWeight: 700, color: "var(--muted)", fontSize: ".95rem" }}
-              >𝕏</a>
             </div>
           </nav>
 
+          {/* Hamburger (mobile only) */}
+          <button
+            className="nav-hamburger-btn"
+            onClick={() => setIsOpen((o) => !o)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+          >
+            {isOpen ? "✕" : "☰"}
+          </button>
         </div>
+      </div>
+
+      {/* Mobile drawer */}
+      <div className={`nav-mobile-drawer${isOpen ? " is-open" : ""}`}>
+        {links.map(({ href, label }) => (
+          <Link key={href} href={href} className="nav-mobile-link" onClick={closeMenu}>
+            {label}
+          </Link>
+        ))}
+        <a
+          href="https://www.linkedin.com/in/ranjanemail/"
+          target="_blank"
+          rel="noreferrer"
+          className="nav-mobile-link"
+          onClick={closeMenu}
+          style={{ color: "#0a66c2", fontWeight: 700, borderBottom: "none", marginTop: 8 }}
+        >
+          <span style={{ fontWeight: 900 }}>in</span> Connect on LinkedIn
+        </a>
       </div>
     </header>
   );

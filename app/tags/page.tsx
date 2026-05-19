@@ -102,7 +102,7 @@ export default function TagsPage() {
       </div>
 
       {/* LinkedIn nudge */}
-      <div style={{ marginTop: 64, background: "var(--navy)", borderRadius: 8, padding: 32, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div style={{ marginTop: 64, background: "var(--navy)", borderRadius: 8, padding: 32 }} className="cta-row">
         <div>
           <p style={{ fontFamily: "'Trebuchet MS', sans-serif", fontWeight: 800, fontSize: "1rem", color: "#fff", marginBottom: 6 }}>Follow the conversation on LinkedIn</p>
           <p style={{ fontFamily: "Georgia, serif", fontSize: ".88rem", color: "rgba(255,255,255,.6)", fontStyle: "italic" }}>Daily posts on AI, governance, and enterprise engineering.</p>

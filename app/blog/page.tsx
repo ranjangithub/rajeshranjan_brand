@@ -21,7 +21,7 @@ export default function BlogPage() {
         </p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 260px", gap: 56 }}>
+      <div className="grid-blog-sidebar">
         {/* Posts */}
         <div>
           {posts.length === 0 ? (
@@ -38,7 +38,7 @@ featured: false
 Your content here.`}</pre>
             </div>
           ) : (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
+            <div className="grid-2">
               {posts.map((p) => <PostCard key={p.slug} post={p} />)}
             </div>
           )}
@@ -72,11 +72,28 @@ Your content here.`}</pre>
           {/* About blurb */}
           <div style={{ background: "var(--navy)", borderRadius: 8, padding: 20, color: "#fff" }}>
             <p style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: ".7rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--orange)", marginBottom: 12 }}>
-              About the Author
+              About
             </p>
-            <p style={{ fontFamily: "Georgia, serif", fontSize: ".85rem", color: "rgba(255,255,255,.7)", lineHeight: 1.7 }}>
-              Rajesh Ranjan Kumar writes at the intersection of enterprise AI, responsible governance, and agentic software engineering.
+            <p style={{ fontFamily: "Georgia, serif", fontSize: ".85rem", color: "rgba(255,255,255,.7)", lineHeight: 1.7, marginBottom: 16 }}>
+              Rajesh Ranjan writes at the intersection of enterprise AI, responsible governance, and agentic software engineering.
             </p>
+            <a href="https://www.linkedin.com/in/ranjanemail/" target="_blank" rel="noreferrer" style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              background: "#0a66c2",
+              color: "#fff",
+              fontFamily: "'Trebuchet MS', sans-serif",
+              fontWeight: 700,
+              fontSize: ".82rem",
+              padding: "9px 16px",
+              borderRadius: 4,
+              textDecoration: "none",
+              letterSpacing: ".03em",
+            }}>
+              <span style={{ fontWeight: 900 }}>in</span> Connect on LinkedIn
+            </a>
           </div>
         </aside>
       </div>

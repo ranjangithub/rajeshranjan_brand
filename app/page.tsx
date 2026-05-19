@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PostCard } from "@/components/PostCard";
 import { getAllPosts, getAllDailyBriefings } from "@/lib/content";
+import { formatDate } from "@/lib/utils";
 
 const FOCUS_AREAS = [
   { icon: "🤖", title: "Agentic AI & SDLC", desc: "Building agentic systems that work safely in production — coding agents, autonomous workflows, and human-in-the-loop architectures." },
@@ -14,75 +16,132 @@ export default function HomePage() {
   const recentPosts = posts.slice(0, 3);
   const dailyBriefings = getAllDailyBriefings().slice(0, 3);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Rajesh Ranjan",
+    url: "https://rajeshranjan.vercel.app",
+    image: "https://rajeshranjan.vercel.app/profile.jpg",
+    jobTitle: "Enterprise AI Architect",
+    description: "Enterprise AI architect with 20+ years building systems at scale. Writing on Generative AI, Responsible AI governance, agentic SDLC, and AI security.",
+    sameAs: [
+      "https://www.linkedin.com/in/ranjanemail/",
+      "https://github.com/ranjangithub",
+    ],
+    knowsAbout: [
+      "Generative AI", "Responsible AI", "Agentic AI", "AI Governance",
+      "Enterprise Architecture", "AI Security", "RAG", "LLMOps",
+      "NIST AI RMF", "EU AI Act", "OWASP LLM Top 10",
+    ],
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <div>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section style={{ background: "linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, var(--green) 100%)", padding: "96px 0 88px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 15% 50%, rgba(224,123,57,.15) 0%, transparent 50%), radial-gradient(circle at 85% 20%, rgba(255,255,255,.05) 0%, transparent 40%)", pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px", position: "relative" }}>
-          <div style={{ maxWidth: 720 }}>
-            <div style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
-              fontSize: ".75rem",
-              fontWeight: 700,
-              letterSpacing: ".14em",
-              textTransform: "uppercase",
-              color: "#f4b07a",
-              background: "rgba(224,123,57,.22)",
-              border: "1px solid rgba(224,123,57,.4)",
-              padding: "5px 14px",
-              borderRadius: 20,
-              marginBottom: 28,
-            }}>Enterprise AI · Responsible AI · Agentic SDLC</div>
-
-            <h1 style={{
-              fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
-              fontSize: "clamp(2.2rem, 5vw, 3.4rem)",
-              fontWeight: 900,
-              color: "#fff",
-              lineHeight: 1.1,
-              marginBottom: 24,
-              letterSpacing: "-.02em",
-            }}>
-              Rajesh Ranjan
-            </h1>
-
-            <p style={{ fontFamily: "Georgia, serif", fontSize: "1.15rem", color: "rgba(255,255,255,.85)", lineHeight: 1.75, maxWidth: 600, marginBottom: 12 }}>
-              Enterprise AI architect with 20+ years building systems at scale.
-              I write daily on Generative AI, responsible AI governance, agentic SDLC,
-              and the engineering controls that make AI trustworthy in production.
-            </p>
-            <p style={{ fontFamily: "Georgia, serif", fontSize: ".95rem", color: "rgba(255,255,255,.55)", fontStyle: "italic", marginBottom: 40 }}>
-              Verizon · CertOnce · ZipiLipi.ai · AWS ML Specialist · 2 US Patents
-            </p>
-
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link href="/daily" style={{
+          <div className="hero-row">
+            {/* Text */}
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
                 fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
+                fontSize: ".75rem",
                 fontWeight: 700,
-                fontSize: ".95rem",
-                letterSpacing: ".04em",
-                background: "var(--orange)",
-                color: "#fff",
-                padding: "13px 30px",
-                borderRadius: 4,
-                textDecoration: "none",
-              }}>Read Daily AI Intel →</Link>
-              <Link href="/about" style={{
+                letterSpacing: ".14em",
+                textTransform: "uppercase",
+                color: "#f4b07a",
+                background: "rgba(224,123,57,.22)",
+                border: "1px solid rgba(224,123,57,.4)",
+                padding: "5px 14px",
+                borderRadius: 20,
+                marginBottom: 28,
+              }}>Enterprise AI · Responsible AI · Agentic SDLC</div>
+
+              <h1 style={{
                 fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
-                fontWeight: 700,
-                fontSize: ".95rem",
-                letterSpacing: ".04em",
-                background: "rgba(255,255,255,.12)",
-                border: "2px solid rgba(255,255,255,.4)",
+                fontSize: "clamp(2.2rem, 5vw, 3.4rem)",
+                fontWeight: 900,
                 color: "#fff",
-                padding: "13px 30px",
-                borderRadius: 4,
-                textDecoration: "none",
-              }}>About Me</Link>
+                lineHeight: 1.1,
+                marginBottom: 24,
+                letterSpacing: "-.02em",
+              }}>
+                Rajesh Ranjan
+              </h1>
+
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "1.15rem", color: "rgba(255,255,255,.85)", lineHeight: 1.75, maxWidth: 600, marginBottom: 12 }}>
+                Enterprise AI architect with 20+ years building systems at scale.
+                I write daily on Generative AI, responsible AI governance, agentic SDLC,
+                and the engineering controls that make AI trustworthy in production.
+              </p>
+              <p style={{ fontFamily: "Georgia, serif", fontSize: ".95rem", color: "rgba(255,255,255,.55)", fontStyle: "italic", marginBottom: 40 }}>
+                Verizon · CertOnce · ZipiLipi.ai · AWS ML Specialist · 2 US Patents
+              </p>
+
+              <div className="hero-btns">
+                <Link href="/daily" style={{
+                  fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
+                  fontWeight: 700,
+                  fontSize: ".95rem",
+                  letterSpacing: ".04em",
+                  background: "var(--orange)",
+                  color: "#fff",
+                  padding: "13px 30px",
+                  borderRadius: 4,
+                  textDecoration: "none",
+                }}>Read Daily Dose →</Link>
+                <a href="https://www.linkedin.com/in/ranjanemail/" target="_blank" rel="noreferrer" style={{
+                  fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
+                  fontWeight: 700,
+                  fontSize: ".95rem",
+                  letterSpacing: ".04em",
+                  background: "#0a66c2",
+                  color: "#fff",
+                  padding: "13px 30px",
+                  borderRadius: 4,
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}>
+                  <span style={{ fontWeight: 900, fontSize: "1rem" }}>in</span> Connect on LinkedIn
+                </a>
+                <Link href="/about" style={{
+                  fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif",
+                  fontWeight: 700,
+                  fontSize: ".95rem",
+                  letterSpacing: ".04em",
+                  background: "rgba(255,255,255,.12)",
+                  border: "2px solid rgba(255,255,255,.4)",
+                  color: "#fff",
+                  padding: "13px 30px",
+                  borderRadius: 4,
+                  textDecoration: "none",
+                }}>About Me</Link>
+              </div>
+            </div>
+
+            {/* Profile photo */}
+            <div className="hero-photo">
+              <div className="hero-img-wrap">
+                <Image
+                  src="/profile.jpg"
+                  alt="Rajesh Ranjan"
+                  width={220}
+                  height={220}
+                  style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -109,7 +168,7 @@ export default function HomePage() {
             <h2 className="section-title" style={{ margin: "0 auto" }}>Enterprise AI in the real world</h2>
             <div className="divider" style={{ margin: "18px auto 0" }} />
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
+          <div className="grid-4">
             {FOCUS_AREAS.map(({ icon, title, desc }) => (
               <div key={title} style={{
                 background: "var(--card-bg)",
@@ -130,11 +189,11 @@ export default function HomePage() {
       {dailyBriefings.length > 0 && (
         <section style={{ padding: "72px 0", background: "var(--navy)" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 40 }}>
+            <div className="section-head-row">
               <div>
-                <span className="section-label" style={{ color: "#f4b07a" }}>Daily Briefings</span>
+                <span className="section-label" style={{ color: "#f4b07a" }}>Daily Dose</span>
                 <h2 style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 900, color: "#fff", lineHeight: 1.25 }}>
-                  Daily AI Intelligence
+                  Daily Dose
                 </h2>
                 <div style={{ width: 52, height: 4, background: "var(--orange)", borderRadius: 2, marginTop: 16 }} />
               </div>
@@ -142,7 +201,7 @@ export default function HomePage() {
                 All briefings →
               </Link>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+            <div className="grid-3">
               {dailyBriefings.map((b) => (
                 <Link key={b.slug} href={`/daily/${b.slug}`} style={{ textDecoration: "none" }}>
                   <div className="card-dark-hover" style={{
@@ -153,8 +212,8 @@ export default function HomePage() {
                     height: "100%",
                   }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
-                      <span style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontSize: ".68rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--orange)", background: "rgba(200,84,26,.2)", padding: "2px 8px", borderRadius: 20 }}>Daily Intel</span>
-                      <span style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontSize: ".75rem", color: "rgba(255,255,255,.45)" }}>{b.date}</span>
+                      <span style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontSize: ".68rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--orange)", background: "rgba(200,84,26,.2)", padding: "2px 8px", borderRadius: 20 }}>Daily Dose</span>
+                      <span style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontSize: ".75rem", color: "rgba(255,255,255,.45)" }}>{formatDate(b.date)}</span>
                     </div>
                     <h3 style={{ fontFamily: "'Trebuchet MS', 'Gill Sans', sans-serif", fontSize: ".98rem", fontWeight: 700, color: "#fff", lineHeight: 1.35, marginBottom: 10 }}>{b.title}</h3>
                     <p style={{ fontFamily: "Georgia, serif", fontSize: ".84rem", color: "rgba(255,255,255,.55)", lineHeight: 1.7 }}>{b.excerpt}</p>
@@ -168,7 +227,7 @@ export default function HomePage() {
 
       {/* ── About strip ──────────────────────────────────────── */}
       <section style={{ background: "var(--surface)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "72px 0" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }} className="grid-2-equal">
           <div>
             <span className="section-label">About Me</span>
             <h2 className="section-title">Rajesh Ranjan</h2>
@@ -213,7 +272,7 @@ export default function HomePage() {
       {recentPosts.length > 0 && (
         <section style={{ padding: "80px 0" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 44 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 44 }} className="section-head-row">
               <div>
                 <span className="section-label">Writing &amp; Analysis</span>
                 <h2 className="section-title">From the Blog</h2>
@@ -223,7 +282,7 @@ export default function HomePage() {
                 All posts →
               </Link>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+            <div className="grid-3">
               {recentPosts.map((p) => (
                 <PostCard key={p.slug} post={p} />
               ))}
@@ -232,5 +291,6 @@ export default function HomePage() {
         </section>
       )}
     </div>
+    </>
   );
 }

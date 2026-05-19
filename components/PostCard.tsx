@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { PostMeta } from "@/lib/content";
+import { formatDate } from "@/lib/utils";
 
 interface PostCardProps {
   post: PostMeta;
@@ -19,7 +20,7 @@ export function PostCard({ post, basePath = "/blog", variant = "default" }: Post
         }}>
           <div style={{ display: "flex", gap: 12, alignItems: "baseline", marginBottom: 4 }}>
             <span style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: ".75rem", color: "var(--muted)", flexShrink: 0 }}>
-              {post.date}
+              {formatDate(post.date)}
             </span>
             <span style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: ".92rem", fontWeight: 700, color: "var(--navy)", lineHeight: 1.3 }}>
               {post.title}
@@ -90,7 +91,7 @@ export function PostCard({ post, basePath = "/blog", variant = "default" }: Post
                 }}>{t}</span>
               ))}
             </div>
-            <span style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: ".8rem", color: "rgba(255,255,255,.4)" }}>{post.date}</span>
+            <span style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: ".8rem", color: "rgba(255,255,255,.4)" }}>{formatDate(post.date)}</span>
           </div>
         </article>
       </Link>
@@ -133,7 +134,7 @@ export function PostCard({ post, basePath = "/blog", variant = "default" }: Post
           {post.excerpt}
         </p>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto", paddingTop: 14, borderTop: "1px solid var(--border)" }}>
-          <span style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: ".75rem", color: "var(--muted)" }}>{post.date}</span>
+          <span style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: ".75rem", color: "var(--muted)" }}>{formatDate(post.date)}</span>
           <span style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: ".78rem", fontWeight: 700, color: "var(--orange)" }}>Read →</span>
         </div>
       </article>

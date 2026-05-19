@@ -36,7 +36,11 @@ function parsePost(dir: string, filename: string, type: PostMeta["type"]): Post 
   return {
     slug,
     title: data.title ?? slug,
-    date: data.date ? String(data.date) : "",
+    date: data.date
+      ? data.date instanceof Date
+        ? data.date.toISOString().split("T")[0]
+        : String(data.date)
+      : "",
     excerpt: data.excerpt ?? content.slice(0, 200).replace(/[#*`]/g, "").trim() + "…",
     tags: Array.isArray(data.tags) ? data.tags : [],
     type,

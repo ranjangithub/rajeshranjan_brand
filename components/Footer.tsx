@@ -23,7 +23,7 @@ const navSections = [
     links: [
       { href: "/", label: "Home" },
       { href: "/blog", label: "Blog" },
-      { href: "/daily", label: "Daily Intel" },
+      { href: "/daily", label: "Daily Dose" },
       { href: "/tags", label: "All Topics" },
     ],
   },
@@ -40,8 +40,7 @@ const navSections = [
     label: "Connect",
     links: [
       { href: "https://www.linkedin.com/in/ranjanemail/", label: "LinkedIn" },
-      { href: "https://twitter.com/rajeshranjankr", label: "X / Twitter" },
-      { href: "https://github.com/ranjangstack", label: "GitHub" },
+      { href: "https://github.com/ranjangithub", label: "GitHub" },
     ],
   },
 ];
@@ -102,7 +101,7 @@ export function Footer() {
       {/* Footer nav */}
       <div style={{ padding: "40px 0 24px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
+          <div className="footer-grid">
             {/* Brand */}
             <div>
               <p style={{ fontFamily: "'Trebuchet MS', sans-serif", fontSize: "1rem", fontWeight: 800, color: "#fff", marginBottom: 8 }}>

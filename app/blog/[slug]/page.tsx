@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { formatDate } from "@/lib/utils";
 import { getPost, getAllPostSlugs } from "@/lib/content";
 
 export async function generateStaticParams() {
@@ -52,9 +53,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {post.title}
         </h1>
         <div style={{ display: "flex", gap: 20, color: "var(--muted)", fontFamily: "'Trebuchet MS', sans-serif", fontSize: ".82rem" }}>
-          <span>By Rajesh Ranjan Kumar</span>
+          <span>By Rajesh Ranjan</span>
           <span>·</span>
-          <span>{post.date}</span>
+          <span>{formatDate(post.date)}</span>
           <span>·</span>
           <span>{post.readTime}</span>
         </div>
@@ -71,7 +72,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           ← All posts
         </Link>
         <Link href="/daily" style={{ fontFamily: "'Trebuchet MS', sans-serif", fontWeight: 700, fontSize: ".85rem", color: "var(--orange)", textDecoration: "none" }}>
-          Daily Intel →
+          Daily Dose →
         </Link>
       </div>
     </div>
