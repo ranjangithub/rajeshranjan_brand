@@ -132,6 +132,8 @@ export function DailyReader({
                   onClick={() => goSignal(i)}
                   style={{
                     width: "100%",
+                    display: "flex",
+                    alignItems: "flex-start",
                     textAlign: "left",
                     padding: "6px 8px",
                     borderRadius: 4,
@@ -149,8 +151,8 @@ export function DailyReader({
                     fontWeight: activeTab === null && activeSignal === i ? 700 : 500,
                   }}
                 >
-                  <span style={{ color: "var(--orange)", fontWeight: 800, marginRight: 5 }}>{s.number}.</span>
-                  <span style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                  <span style={{ color: "var(--orange)", fontWeight: 800, flexShrink: 0, marginRight: 4 }}>{s.number}.</span>
+                  <span style={{ flex: 1, minWidth: 0, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                     {s.title}
                   </span>
                 </button>
@@ -272,8 +274,8 @@ export function DailyReader({
               signal ? (
                 <>
                   {/* Signal header + nav */}
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
-                    <div style={{ flex: 1, minWidth: 0, marginRight: 16 }}>
+                  <div className="signal-header-row">
+                    <div style={{ flex: 1, minWidth: 0 }}>
                       <span style={{ fontFamily: BODY_FONT, fontSize: ".7rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--orange)" }}>
                         Signal {signal.number} / {total}
                       </span>

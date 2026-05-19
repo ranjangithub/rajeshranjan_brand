@@ -346,10 +346,23 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 700px) {
   .daily-layout { display: block; height: auto; overflow: visible; }
-  .daily-sidebar-wrap { width: 100%; border-right: none; border-bottom: 1px solid var(--border); max-height: 280px; }
+  /* No max-height — sidebar expands fully so Archive is always visible */
+  .daily-sidebar-wrap { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
   .daily-sidebar-wrap.sidebar-collapsed { display: none; }
   .daily-main-wrap { overflow: visible; }
   .daily-content-scroll { overflow-y: visible; padding: 16px 20px; }
+}
+
+/* Signal header: title full-width on mobile, Prev/Next below */
+.signal-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+@media (max-width: 700px) {
+  .signal-header-row { flex-direction: column; gap: 12px; }
+  .signal-header-row > div:first-child { margin-right: 0 !important; width: 100%; }
 }
 
 .daily-sidebar-toggle-btn { display: none; }
